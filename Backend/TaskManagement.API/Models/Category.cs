@@ -8,4 +8,8 @@ public class Category
     public string Color {get; set;} = "#007bff";
     public Guid UserId {get; set;}
     public DateTime CreatedAt {get; set;} = DateTime.UtcNow;
+
+    // Navigation Property'ler
+    public User User {get; set;} = null!;
+    public ICollection<TaskItem> Tasks {get; set;} = new List<TaskItem>();
 }

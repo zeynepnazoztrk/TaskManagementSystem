@@ -14,4 +14,10 @@ public class TaskItem
     public Guid? CategoryId {get; set;}
     public DateTime CreatedAt {get; set;} = DateTime.UtcNow;
     public DateTime UpdatedAt {get; set;} = DateTime.UtcNow;
+
+    // Navigation Property'ler
+    public User User {get; set;} = null!;
+    public Category? Category {get; set;}
+    public ICollection<TaskAttachment> Atachments {get; set;} = new List<TaskAttachment>();
+    public ICollection<TaskComment> Comments {get; set;} = new List<TaskComment>();
 }

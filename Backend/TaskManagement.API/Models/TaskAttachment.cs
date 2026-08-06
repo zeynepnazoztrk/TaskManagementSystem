@@ -9,4 +9,7 @@ public class TaskAttachment
     public long FileSize {get; set;}
     public string ContentType {get; set;} = string.Empty;
     public DateTime UploadedAt {get; set;} = DateTime.UtcNow;
+
+    // Navigation Property'ler
+    public TaskItem Task { get; set; } = null!;
 }

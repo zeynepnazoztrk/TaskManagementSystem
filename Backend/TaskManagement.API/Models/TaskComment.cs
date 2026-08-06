@@ -7,4 +7,8 @@ public class TaskComment
     public Guid UserId {get; set;}
     public string Comment {get; set;} = string.Empty;
     public DateTime CreatedAt {get; set;} = DateTime.UtcNow;
+
+    // Navigation Property'ler
+    public TaskItem Task { get; set; } = null!;
+    public User User { get; set; } = null!;
 }
