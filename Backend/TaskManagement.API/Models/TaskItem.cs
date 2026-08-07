@@ -18,6 +18,6 @@ public class TaskItem
     // Navigation Property'ler
     public User User {get; set;} = null!;
     public Category? Category {get; set;}
-    public ICollection<TaskAttachment> Atachments {get; set;} = new List<TaskAttachment>();
+    public ICollection<TaskAttachment> Attachments {get; set;} = new List<TaskAttachment>();
     public ICollection<TaskComment> Comments {get; set;} = new List<TaskComment>();
 }
