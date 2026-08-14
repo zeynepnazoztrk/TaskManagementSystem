@@ -8,7 +8,7 @@ public class TaskItem
     public string Title {get; set;} = string.Empty;
     public string? Description {get; set;}
     public Priority Priority {get; set;} = Priority.Low;
-    public TaskStatus Status {get; set;} = TaskStatus.Pending;
+    public TaskItemStatus Status {get; set;} = TaskItemStatus.Pending;
     public DateTime? DueDate {get; set;}
     public DateTime? CompletedAt {get; set;}
     public Guid UserId {get; set;}

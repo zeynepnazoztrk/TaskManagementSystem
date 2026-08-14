@@ -46,7 +46,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         {
             entity.Property(t => t.Title).HasMaxLength(200).IsRequired();
             entity.Property(t => t.Priority).HasDefaultValue(Priority.Low).HasSentinel(Priority.Low);
-            entity.Property(t => t.Status).HasDefaultValue(TaskStatus.Pending);
+            entity.Property(t => t.Status).HasDefaultValue(TaskItemStatus.Pending);
             entity.Property(t => t.UserId).IsRequired();
 
             entity.HasOne(t => t.User).WithMany(u => u.Tasks).HasForeignKey(t => t.UserId).OnDelete(DeleteBehavior.Cascade);
