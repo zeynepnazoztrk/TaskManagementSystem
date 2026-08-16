@@ -39,6 +39,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 // JwtService
 builder.Services.AddScoped<IJwtService, JwtService>();
 
+// AuthService
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 // Interfaces and Services
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
