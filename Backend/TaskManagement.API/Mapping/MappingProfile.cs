@@ -11,21 +11,22 @@ public class MappingProfile : Profile
         // User Mapping
         CreateMap<User, UserDto>();
         CreateMap<CreateUserDto, User>();
-        CreateMap<UpdateUserDto, User>()
-            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        CreateMap<UpdateUserDto, User>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
         // Category Mapping
         CreateMap<Category, CategoryDto>();
         CreateMap<CreateCategoryDto, Category>();
-        CreateMap<UpdateCategoryDto, Category>()
-            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        CreateMap<UpdateCategoryDto, Category>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
         // TaskItem Mapping
-        CreateMap<TaskItem, TaskItemDto>()
-            .ForMember(dest => dest.CategoryName,
-                opt => opt.MapFrom(src => src.Category != null ? src.Category.Name : null));
+        CreateMap<TaskItem, TaskItemDto>().ForMember(dest => dest.CategoryName,opt => opt.MapFrom(src => src.Category != null ? src.Category.Name : null));
         CreateMap<CreateTaskDto, TaskItem>();
-        CreateMap<UpdateTaskDto, TaskItem>()
-            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        CreateMap<UpdateTaskDto, TaskItem>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+        // TaskAttachment Mapping
+        CreateMap<TaskAttachment, TaskAttachmentDto>();
+
+        // TaskComment Mapping
+        CreateMap<TaskComment, TaskCommentDto>();
     }
 }

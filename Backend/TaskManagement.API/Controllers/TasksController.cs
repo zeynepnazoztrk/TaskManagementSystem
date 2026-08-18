@@ -14,11 +14,11 @@ public class TasksController(ITaskService taskService) : ControllerBase
 {
     // User için Task listesi
     [HttpGet]
-    public async Task<ActionResult<List<TaskItemDto>>> GetAll()
+    public async Task<ActionResult<PagedResultDto<TaskItemDto>>> GetAll([FromQuery] TaskFilterDto dto)
     {
         var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        var tasks = await taskService.GetAllAsync(userId);
-        return Ok(tasks);
+        var result = await taskService.GetAllAsync(userId, dto);
+        return Ok(result);
     }
 
     // Task bilgileri
@@ -55,5 +55,23 @@ public class TasksController(ITaskService taskService) : ControllerBase
         var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
         await taskService.DeleteAsync(taskId, userId);
         return NoContent();
+    }
+
+    // Task istatistikleri
+    [HttpGet("stats")]
+    public async Task<ActionResult<TaskStatisticsDto>> GetStatistics()
+    {
+        var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var statistics = await taskService.GetStatisticsAsync(userId);
+        return Ok(statistics);
+    }
+
+    // Vadesi geçen görevler
+    [HttpGet("overdue")]
+    public async Task<ActionResult<List<TaskItemDto>>> GetOverdue()
+    {
+        var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var tasks = await taskService.GetOverdueAsync(userId);
+        return Ok(tasks);
     }
 }
