@@ -19,7 +19,9 @@ public class MappingProfile : Profile
         CreateMap<UpdateCategoryDto, Category>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
         // TaskItem Mapping
-        CreateMap<TaskItem, TaskItemDto>().ForMember(dest => dest.CategoryName,opt => opt.MapFrom(src => src.Category != null ? src.Category.Name : null));
+        CreateMap<TaskItem, TaskItemDto>()
+            .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category != null ? src.Category.Name : null))
+            .ForMember(dest => dest.CategoryColor, opt => opt.MapFrom(src => src.Category != null ? src.Category.Color : null));
         CreateMap<CreateTaskDto, TaskItem>();
         // CreateMap<UpdateTaskDto, TaskItem>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         CreateMap<UpdateTaskDto, TaskItem>()

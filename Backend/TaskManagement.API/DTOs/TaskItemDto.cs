@@ -12,6 +12,7 @@ public class TaskItemDto
     public Guid UserId {get; set;}
     public Guid? CategoryId {get; set;}
     public string? CategoryName {get; set;}
+    public string? CategoryColor {get; set;}
     public DateTime CreatedAt {get; set;}
     public DateTime UpdatedAt {get; set;}
 }
