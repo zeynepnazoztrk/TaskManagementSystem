@@ -21,7 +21,11 @@ public class MappingProfile : Profile
         // TaskItem Mapping
         CreateMap<TaskItem, TaskItemDto>().ForMember(dest => dest.CategoryName,opt => opt.MapFrom(src => src.Category != null ? src.Category.Name : null));
         CreateMap<CreateTaskDto, TaskItem>();
-        CreateMap<UpdateTaskDto, TaskItem>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        // CreateMap<UpdateTaskDto, TaskItem>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+        CreateMap<UpdateTaskDto, TaskItem>()
+            .ForMember(dest => dest.Priority, opt => opt.Ignore())
+            .ForMember(dest => dest.Status, opt => opt.Ignore())
+            .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
         // TaskAttachment Mapping
         CreateMap<TaskAttachment, TaskAttachmentDto>();

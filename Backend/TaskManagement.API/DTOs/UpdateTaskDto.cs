@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 public class UpdateTaskDto
 {
     [MaxLength(200)]
-    public string? Title {get; set;} = string.Empty;
+    public string? Title {get; set;}
 
     public string? Description {get; set;}
     public int? Priority {get; set;}

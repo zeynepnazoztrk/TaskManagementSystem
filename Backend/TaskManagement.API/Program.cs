@@ -1,6 +1,7 @@
 using TaskManagement.API.Data;
 using TaskManagement.API.Mapping;
 using TaskManagement.API.Services;
+using TaskManagement.API.Middleware;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -71,9 +72,25 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// CORS yapılandırması
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+// Exception handling
+builder.Services.AddExceptionHandler<ExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -83,6 +100,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowFrontend");
 
 app.UseAuthentication();
 app.UseAuthorization();

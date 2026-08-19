@@ -7,8 +7,9 @@ using TaskManagement.API.DTOs;
 using TaskManagement.API.Exceptions;
 using TaskManagement.API.Models;
 
-public class AuthService(ApplicationDbContext context, IMapper mapper, IJwtService jwtService) : IAuthService
+public class AuthService(ApplicationDbContext context, IMapper mapper, IJwtService jwtService, ILogger<AuthService> logger) : IAuthService
 {
+    // RegisterAsync - yeni User oluştur
     public async Task<AuthDto> RegisterAsync(CreateUserDto dto)
     {
         var usernameTaken = await context.Users.AnyAsync(u => u.Username == dto.Username);
@@ -37,25 +38,26 @@ public class AuthService(ApplicationDbContext context, IMapper mapper, IJwtServi
         };
     }
 
+    // LoginAsync - User giriş + logging sistemi
     public async Task<AuthDto> LoginAsync(LoginDto dto)
     {
         var user = await context.Users.FirstOrDefaultAsync(u => u.Username == dto.Username);
         if (user == null)
         {
+            logger.LogWarning("User '{Username}' not found.", dto.Username);
             throw new ValidationException("Invalid username or password.");
         }
 
         var passwordValid = BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash);
         if (!passwordValid)
         {
+            logger.LogWarning("Incorrect password for username '{Username}'.", dto.Username);
             throw new ValidationException("Invalid username or password.");
         }
 
+        logger.LogInformation("User logged in.", dto.Username);
+
         var token = jwtService.GenerateToken(user);
-        return new AuthDto
-        {
-            User = mapper.Map<UserDto>(user),
-            Token = token
-        };
+        return new AuthDto { User = mapper.Map<UserDto>(user), Token = token };
     }
 }

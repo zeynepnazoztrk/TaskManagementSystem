@@ -82,17 +82,17 @@ public class TaskService(ApplicationDbContext context, IMapper mapper) : ITaskSe
 
         mapper.Map(dto, task);
 
-        if (dto.Status != null)
+        if (dto.Priority.HasValue)
         {
-            if (task.Status == TaskItemStatus.Completed)
-            {
-                task.CompletedAt = DateTime.UtcNow;
-            }
-            else
-            {
-                task.CompletedAt = null;
-            }
+            task.Priority = (Priority)dto.Priority.Value;
         }
+
+        if (dto.Status.HasValue)
+        {
+            task.Status = (TaskItemStatus)dto.Status.Value;
+            task.CompletedAt = task.Status == TaskItemStatus.Completed ? DateTime.UtcNow : null;
+        }
+
         task.UpdatedAt = DateTime.UtcNow;
         await context.SaveChangesAsync();
 
