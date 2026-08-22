@@ -7,13 +7,13 @@ export interface Category {
   createdAt: string;
 }
 
-export interface CreateCategoryRequest {
+export interface CreateCategory {
   name: string;
   description?: string;
   color?: string;
 }
 
-export interface UpdateCategoryRequest {
+export interface UpdateCategory {
   name?: string;
   description?: string;
   color?: string;

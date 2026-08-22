@@ -16,7 +16,7 @@ export interface TaskItem {
   updatedAt: string;
 }
 
-export interface CreateTaskRequest {
+export interface CreateTask {
   title: string;
   description?: string;
   priority: Priority;
@@ -24,7 +24,7 @@ export interface CreateTaskRequest {
   categoryId?: string;
 }
 
-export interface UpdateTaskRequest {
+export interface UpdateTask {
   title?: string;
   description?: string;
   priority?: Priority;
