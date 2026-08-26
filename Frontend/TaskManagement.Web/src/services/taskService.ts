@@ -6,6 +6,7 @@ import type {
   TaskFilter,
   PagedResult,
 } from "../types/task";
+import type { TaskStatistics } from "../types/statistics";
 
 export const taskService = {
   getAll: async (filter: TaskFilter) => {
@@ -32,5 +33,15 @@ export const taskService = {
 
   delete: async (taskId: string) => {
     await api.delete(`/tasks/${taskId}`);
+  },
+
+  getStats: async () => {
+    const response = await api.get<TaskStatistics>("/tasks/stats");
+    return response.data;
+  },
+
+  getOverdue: async () => {
+    const response = await api.get<TaskItem[]>("/tasks/overdue");
+    return response.data;
   },
 };
