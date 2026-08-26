@@ -10,5 +10,5 @@ public class CreateCategoryDto
     public string? Description {get; set;}
 
     [Required, MaxLength(7)]
-    public string Color {get; set;} = "#007bff";
+    public string Color {get; set;} = "#4960a4";
 }

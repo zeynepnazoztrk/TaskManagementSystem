@@ -5,8 +5,8 @@ public class TaskItemDto
     public Guid Id {get; set;}
     public string Title {get; set;} = string.Empty;
     public string? Description {get; set;}
-    public string Priority {get; set;} = string.Empty;
-    public string Status {get; set;} = string.Empty;
+    public int Priority {get; set;}
+    public int Status {get; set;}
     public DateTime? DueDate {get; set;}
     public DateTime? CompletedAt {get; set;}
     public Guid UserId {get; set;}

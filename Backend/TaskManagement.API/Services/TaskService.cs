@@ -93,6 +93,12 @@ public class TaskService(ApplicationDbContext context, IMapper mapper) : ITaskSe
             task.CompletedAt = task.Status == TaskItemStatus.Completed ? DateTime.UtcNow : null;
         }
 
+        if (task.CategoryId == Guid.Empty)
+        {
+            task.CategoryId = null;
+            task.Category = null;
+        }
+
         task.UpdatedAt = DateTime.UtcNow;
         await context.SaveChangesAsync();
 

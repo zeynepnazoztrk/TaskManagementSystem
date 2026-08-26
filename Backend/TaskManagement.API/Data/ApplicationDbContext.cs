@@ -36,7 +36,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         modelBuilder.Entity<Category>(entity =>
         {
             entity.Property(c => c.Name).HasMaxLength(100).IsRequired();
-            entity.Property(c => c.Color).HasMaxLength(7).HasDefaultValue("#007bff");
+            entity.Property(c => c.Color).HasMaxLength(7).HasDefaultValue("#4960a4");
             
             entity.HasOne(c => c.User).WithMany(u => u.Categories).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.Cascade);
         });

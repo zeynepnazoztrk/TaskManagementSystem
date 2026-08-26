@@ -17,7 +17,7 @@ export function Layout() {
       </div>
       <div className="flex flex-column flex-grow-1 overflow-x-hidden">
         <Header />
-        <div className="flex-grow-1 p-3 overflow-y-auto">
+        <div className="flex-grow-1 p-3 px-6 overflow-y-auto">
           <Outlet />
         </div>
         <Footer />
