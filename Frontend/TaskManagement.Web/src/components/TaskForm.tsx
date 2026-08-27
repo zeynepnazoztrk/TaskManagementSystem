@@ -40,7 +40,12 @@ const emptyValues: TaskFormValues = {
 
 export function TaskForm({ visible, task, onHide, onSaved }: TaskFormProps) {
   const [categories, setCategories] = useState<Category[]>([]);
-  const { control, handleSubmit, reset } = useForm<TaskFormValues>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<TaskFormValues>({
     defaultValues: emptyValues,
   });
 
@@ -99,10 +104,14 @@ export function TaskForm({ visible, task, onHide, onSaved }: TaskFormProps) {
         <Controller
           name="title"
           control={control}
+          rules={{ required: "Title is required" }}
           render={({ field }) => (
             <InputText placeholder="Title" className="w-full" {...field} />
           )}
         />
+        {errors.title && (
+          <small className="p-error block mt-1">{errors.title.message}</small>
+        )}
         <Controller
           name="description"
           control={control}

@@ -19,7 +19,9 @@ export function StatsCard({ label, value, color }: StatsCardProps) {
         <div className="text-3xl font-bold" style={{ color }}>
           {value}
         </div>
-        <div className="text-color-secondary mt-2">{label}</div>
+        <div className="text-color-secondary white-space-nowrap mt-2">
+          {label}
+        </div>
       </div>
     </Card>
   );

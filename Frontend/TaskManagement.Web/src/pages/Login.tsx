@@ -53,7 +53,11 @@ export function Login() {
                 control={control}
                 rules={{ required: "Username is required" }}
                 render={({ field }) => (
-                  <InputText id="username" className="w-full" {...field} />
+                  <InputText
+                    id="username"
+                    className="app-input w-full"
+                    {...field}
+                  />
                 )}
               />
               <label htmlFor="username">Username</label>

@@ -52,12 +52,7 @@ export function TaskDetail({ task, onEdit, onDelete }: TaskDetailProps) {
 
       <div className="flex justify-content-center gap-2 mt-5">
         <Button label="Edit" text onClick={() => onEdit(task)} />
-        <Button
-          label="Delete"
-          text
-          severity="danger"
-          onClick={() => onDelete(task)}
-        />
+        <Button label="Delete" text onClick={() => onDelete(task)} />
       </div>
 
       <h3 className="mt-8">Attachments</h3>

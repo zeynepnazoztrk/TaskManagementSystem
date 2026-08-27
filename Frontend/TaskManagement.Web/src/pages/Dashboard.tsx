@@ -59,7 +59,7 @@ export function Dashboard() {
   return (
     <div>
       {stats && (
-        <div className="flex gap-3 mb-3">
+        <div className="flex flex-column md:flex-row gap-3 mb-3">
           <StatsCard label="Total" value={stats.totalTasks} color="#A09DF4" />
           <StatsCard
             label="Pending"
@@ -97,12 +97,12 @@ export function Dashboard() {
         </div>
       )}
 
-      <div className="flex gap-4">
+      <div className="flex flex-column lg:flex-row gap-4">
         <div style={{ flex: 2 }}>
           <h3 className="mb-3" style={{ visibility: "hidden" }}>
             Tasks by Status
           </h3>
-          <div className="flex align-items-center gap-4">
+          <div className="flex flex-column md:flex-row align-items-center gap-4">
             <div style={{ maxWidth: "25em" }}>
               {chartData && (
                 <Chart type="pie" data={chartData} options={chartOptions} />
@@ -119,7 +119,9 @@ export function Dashboard() {
                       backgroundColor: item.color,
                     }}
                   />
-                  <span>{item.label}</span>
+                  <span className="text-sm white-space-nowrap">
+                    {item.label}
+                  </span>
                 </div>
               ))}
             </div>

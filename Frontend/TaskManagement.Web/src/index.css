@@ -110,6 +110,8 @@ code {
 .p-password,
 .p-password-input {
   width: 25rem !important;
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .sidebar-link {
@@ -137,4 +139,32 @@ code {
 .app-dropdown.p-dropdown {
   background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-input.p-inputtext {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.app-dropdown,
+.app-dropdown * {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.p-toast-message-success {
+  background-color: #a09df4;
+}
+.p-toast-message-success,
+.p-toast-message-success .p-toast-message-icon,
+.p-toast-message-success .p-toast-summary,
+.p-toast-message-success .p-toast-detail,
+.p-toast-message-success .p-toast-icon-close-icon {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.app-panel .p-panel-header,
+.app-panel .p-panel-content {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
