@@ -1,4 +1,5 @@
 import { Card } from "primereact/card";
+import { memo } from "react";
 
 interface StatsCardProps {
   label: string;
@@ -6,7 +7,7 @@ interface StatsCardProps {
   color: string;
 }
 
-export function StatsCard({ label, value, color }: StatsCardProps) {
+function StatsCardComponent({ label, value, color }: StatsCardProps) {
   return (
     <Card
       className="flex-1"
@@ -26,3 +27,5 @@ export function StatsCard({ label, value, color }: StatsCardProps) {
     </Card>
   );
 }
+
+export const StatsCard = memo(StatsCardComponent);

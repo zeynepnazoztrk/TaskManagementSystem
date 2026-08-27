@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
 import { Chart } from "primereact/chart";
-import { Message } from "primereact/message";
 import { Tag } from "primereact/tag";
 import { taskService } from "../services/taskService";
 import { StatsCard } from "../components/StatsCard";
@@ -17,7 +15,6 @@ const statusLegend = [
 ];
 
 export function Dashboard() {
-  const navigate = useNavigate();
   const [stats, setStats] = useState<TaskStatistics | null>(null);
   const [overdueTasks, setOverdueTasks] = useState<TaskItem[]>([]);
   const [recentTasks, setRecentTasks] = useState<TaskItem[]>([]);
@@ -34,21 +31,25 @@ export function Dashboard() {
     });
   }, []);
 
-  const chartData = stats && {
-    labels: ["Pending", "In Progress", "Completed", "Cancelled"],
-    datasets: [
-      {
-        data: [
-          stats.pendingCount,
-          stats.inProgressCount,
-          stats.completedCount,
-          stats.cancelledCount,
+  const chartData = useMemo(() => {
+    return (
+      stats && {
+        labels: ["Pending", "In Progress", "Completed", "Cancelled"],
+        datasets: [
+          {
+            data: [
+              stats.pendingCount,
+              stats.inProgressCount,
+              stats.completedCount,
+              stats.cancelledCount,
+            ],
+            backgroundColor: ["#a16207", "#1d4ed8", "#15803d", "#4b5563"],
+            borderColor: "#16171C",
+          },
         ],
-        backgroundColor: ["#a16207", "#1d4ed8", "#15803d", "#4b5563"],
-        borderColor: "#16171C",
-      },
-    ],
-  };
+      }
+    );
+  }, [stats]);
 
   const chartOptions = {
     plugins: {

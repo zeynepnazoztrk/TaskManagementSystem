@@ -71,7 +71,7 @@ export function TaskForm({ visible, task, onHide, onSaved }: TaskFormProps) {
   const onSubmit = async (data: TaskFormValues) => {
     const basePayload = {
       title: data.title,
-      description: data.description || undefined,
+      description: data.description,
       priority: data.priority,
       dueDate: data.dueDate ? data.dueDate.toISOString() : undefined,
     };
