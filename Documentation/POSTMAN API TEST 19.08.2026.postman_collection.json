@@ -1,0 +1,1161 @@
+{
+  "info": {
+    "_postman_id": "00dbc95b-af32-4874-92d5-1e68331368e0",
+    "name": "POSTMAN API TEST 19.08.2026",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57464790",
+    "_collection_link": "https://go.postman.co/collection/57464790-00dbc95b-af32-4874-92d5-1e68331368e0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "register new",
+      "request": {
+        "auth": {
+          "type": "bearer"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"test01\",\n  \"email\": \"test01@example.com\",\n  \"password\": \"test123\",\n  \"firstName\": \"test\",\n  \"lastName\": \"user\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "wrong password login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"test01\",\n  \"password\": \"test1234\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0nzo}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"test01\",\n  \"password\": \"test123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "profile without token",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/auth/profile",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "auth",
+            "profile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "profile",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0nzo}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/auth/profile",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "auth",
+            "profile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create task 01",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0nzo}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"test task 01\",\n  \"description\": \"first test task\",\n  \"priority\": 2,\n  \"dueDate\": \"2026-09-01T00:00:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create task 02",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0nzo}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"test task 02\",\n  \"description\": \"second test task\",\n  \"priority\": 4,\n  \"dueDate\": \"2026-08-01T00:00:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "list tasks",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "filter status pending",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0nzo}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks?status=0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "filter status completed",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0nzo}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks?status=2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "filter title",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0nzo}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks?searchTerm=02",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "searchTerm",
+              "value": "02"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "pagination",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks?page=1&pageSize=2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "pageSize",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get task by id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/2c0485e5-4ca6-49bd-8fd8-51eba15b5905",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "2c0485e5-4ca6-49bd-8fd8-51eba15b5905"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "wrong task id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/00000000-0000-0000-0000-000000000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "00000000-0000-0000-0000-000000000000"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "task completed",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"status\" : \"2\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/ce7c5118-eb94-41d3-b53f-ca4e0ce24f5d",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "ce7c5118-eb94-41d3-b53f-ca4e0ce24f5d"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "statistics",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/stats",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "stats"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "overdue",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/overdue",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "overdue"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete task",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/61d403ec-eeb6-4d1a-8dc4-93235d7a0236",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "61d403ec-eeb6-4d1a-8dc4-93235d7a0236"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create task 03",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"test task 03\",\n  \"description\": \"third test task\",\n  \"priority\": 1,\n  \"dueDate\": \"2026-10-01T00:00:00Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/tasks",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create category 01",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \n    \"name\": \"test category 01\", \n    \"color\": \"#007bff\" \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create category 02",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \n    \"name\": \"test category 01\", \n    \"description\": \"second test category\",\n    \"color\": \"#007bff\" \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "list categories",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/categories",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get category by id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/categories/2d138c89-ed17-4ba4-b45d-952ca345dbeb",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "categories",
+            "2d138c89-ed17-4ba4-b45d-952ca345dbeb"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update category",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_19r3}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \n    \"name\": \"updated category\"\n\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/categories/d11d8985-4da9-4689-b5cf-56583d81fc42",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "categories",
+            "d11d8985-4da9-4689-b5cf-56583d81fc42"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete category",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/categories/2d138c89-ed17-4ba4-b45d-952ca345dbeb",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "categories",
+            "2d138c89-ed17-4ba4-b45d-952ca345dbeb"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "upload file",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "uuid": "9a0c574a-d1fe-4041-bae1-b2bcf63fa0b6",
+              "src": "/Users/zeynepnazoztrk/Desktop/2-2/MATH 242/HW2.pdf"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/f6b9f55a-508f-48e3-8645-132cf508cc4c/attachments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "f6b9f55a-508f-48e3-8645-132cf508cc4c",
+            "attachments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "list files",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/f6b9f55a-508f-48e3-8645-132cf508cc4c/attachments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "f6b9f55a-508f-48e3-8645-132cf508cc4c",
+            "attachments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "list comments",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/f6b9f55a-508f-48e3-8645-132cf508cc4c/comments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "f6b9f55a-508f-48e3-8645-132cf508cc4c",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "create comment",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"comment\": \"test comment 02\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/f6b9f55a-508f-48e3-8645-132cf508cc4c/comments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "f6b9f55a-508f-48e3-8645-132cf508cc4c",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "comment on another task",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{testtoken01}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"comment\": \"test\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/00000000-0000-0000-0000-000000000000/comments",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "00000000-0000-0000-0000-000000000000",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete comment",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{supabase_service_role_api_key_0zgr}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/e7420011-64d1-41b4-948c-acf22dd117e6/comments/3f4d8ec6-6ff5-4d1e-93ee-64a79ccd7865",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "e7420011-64d1-41b4-948c-acf22dd117e6",
+            "comments",
+            "3f4d8ec6-6ff5-4d1e-93ee-64a79ccd7865"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete file",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_04h3}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5111/api/tasks/e7420011-64d1-41b4-948c-acf22dd117e6/attachments/77e60d7d-0652-43d5-ac37-fd65a07ee276",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5111",
+          "path": [
+            "api",
+            "tasks",
+            "e7420011-64d1-41b4-948c-acf22dd117e6",
+            "attachments",
+            "77e60d7d-0652-43d5-ac37-fd65a07ee276"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "supabase_service_role_api_key_0nzo",
+      "secret": true
+    },
+    {
+      "key": "auth_secret_0nzo",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_19r3",
+      "secret": true
+    },
+    {
+      "key": "supabase_service_role_api_key_0zgr",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_04h3",
+      "secret": true
+    }
+  ]
+}
