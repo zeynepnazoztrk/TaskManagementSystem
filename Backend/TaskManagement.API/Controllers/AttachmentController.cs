@@ -29,4 +29,13 @@ public class AttachmentController(IAttachmentService attachmentService) : Contro
         var attachment = await attachmentService.UploadAsync(taskId, userId, file);
         return Ok(attachment);
     }
+
+    // Attachment sil
+    [HttpDelete("{attachmentId}")]
+    public async Task<IActionResult> Delete(Guid taskId, Guid attachmentId)
+    {
+        var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        await attachmentService.DeleteAsync(taskId, attachmentId, userId);
+        return NoContent();
+    }
 }

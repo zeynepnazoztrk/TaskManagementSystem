@@ -57,4 +57,22 @@ public class AttachmentService(ApplicationDbContext context, IMapper mapper, IWe
 
         return mapper.Map<TaskAttachmentDto>(attachment);
     }
+
+    // DeleteAsync -- Attachment sil
+    public async Task DeleteAsync(Guid taskId, Guid attachmentId, Guid userId)
+    {
+        var attachment = await context.TaskAttachments.FirstOrDefaultAsync(a => a.Id == attachmentId && a.TaskId == taskId);
+        if (attachment is null)
+        {
+            throw new NotFoundException($"Attachment with id {attachmentId} not found.");
+        }
+
+        if (File.Exists(attachment.FilePath))
+        {
+            File.Delete(attachment.FilePath);
+        }
+
+        context.TaskAttachments.Remove(attachment);
+        await context.SaveChangesAsync();
+    }
 }

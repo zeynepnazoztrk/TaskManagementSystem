@@ -3,6 +3,8 @@ import { Tag } from "primereact/tag";
 import { Button } from "primereact/button";
 import type { TaskItem } from "../types/task";
 import { priorityTags, statusTags } from "../utils/taskTags";
+import { CommentsSection } from "../components/CommentsSection";
+import { AttachmentsSection } from "../components/AttachmentsSection";
 
 interface TaskDetailProps {
   task: TaskItem;
@@ -55,11 +57,11 @@ export function TaskDetail({ task, onEdit, onDelete }: TaskDetailProps) {
         <Button label="Delete" text onClick={() => onDelete(task)} />
       </div>
 
-      <h3 className="mt-8">Attachments</h3>
-      <p className="text-color-secondary">Attachments come here.</p>
+      <h3 className="mt-8"></h3>
+      <AttachmentsSection taskId={task.id} />
 
-      <h3 className="mt-5">Comments</h3>
-      <p className="text-color-secondary">Comments come here.</p>
+      <h3 className="mt-8"></h3>
+      <CommentsSection taskId={task.id} />
     </Card>
   );
 }

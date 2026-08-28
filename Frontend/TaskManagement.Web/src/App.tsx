@@ -9,6 +9,7 @@ import { Tasks } from "./pages/Tasks";
 import { TaskDetailed } from "./pages/TaskDetailed";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Categories } from "./pages/Categories";
+import { Profile } from "./pages/Profile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/tasks" element={<Tasks />} />
                 <Route path="/tasks/:taskId" element={<TaskDetailed />} />
                 <Route path="/categories" element={<Categories />} />
+                <Route path="/profile" element={<Profile />} />
               </Route>
             </Route>
           </Routes>

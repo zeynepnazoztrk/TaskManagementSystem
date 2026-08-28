@@ -15,4 +15,9 @@ export const authService = {
   logout: (): void => {
     localStorage.removeItem("token");
   },
+
+  getProfile: async () => {
+    const response = await api.get<User>("/auth/profile");
+    return response.data;
+  },
 };

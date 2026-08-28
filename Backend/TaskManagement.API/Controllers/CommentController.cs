@@ -29,4 +29,13 @@ public class CommentController(ICommentService commentService) : ControllerBase
         var comment = await commentService.CreateAsync(taskId, userId, dto);
         return Ok(comment);
     }
+
+    // Comment sil
+    [HttpDelete("{commentId}")]
+    public async Task<IActionResult> Delete(Guid taskId, Guid commentId)
+    {
+        var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        await commentService.DeleteAsync(taskId, commentId, userId);
+        return NoContent();
+    }
 }
