@@ -43,7 +43,7 @@ export function TaskFilter({ filter, onChange }: TaskFilterProps) {
     });
   }
   return (
-    <Panel header="Filters" toggleable className="app-panel mb-4">
+    <Panel header="Filters" toggleable className="mb-4">
       <div className="flex flex-column lg:flex-row gap-3 mb-4">
         <InputText
           placeholder="Search by title"
@@ -51,7 +51,6 @@ export function TaskFilter({ filter, onChange }: TaskFilterProps) {
           onChange={(e) =>
             onChange({ ...filter, searchTerm: e.target.value || undefined })
           }
-          className="app-input"
         />
         <Dropdown
           placeholder="Status"
@@ -59,7 +58,6 @@ export function TaskFilter({ filter, onChange }: TaskFilterProps) {
           options={statusOptions}
           onChange={(e) => onChange({ ...filter, status: e.value })}
           showClear
-          className="app-dropdown"
         />
         <Dropdown
           placeholder="Priority"
@@ -67,7 +65,6 @@ export function TaskFilter({ filter, onChange }: TaskFilterProps) {
           options={priorityOptions}
           onChange={(e) => onChange({ ...filter, priority: e.value })}
           showClear
-          className="app-dropdown"
         />
         <Calendar
           placeholder="Due date"
@@ -79,7 +76,6 @@ export function TaskFilter({ filter, onChange }: TaskFilterProps) {
             })
           }
           showIcon
-          className="app-dropdown"
         />
       </div>
       {chips.length > 0 && (

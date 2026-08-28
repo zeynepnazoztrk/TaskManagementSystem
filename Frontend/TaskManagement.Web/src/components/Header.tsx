@@ -1,29 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { Button } from "primereact/button";
+import { useTheme } from "../hooks/useTheme";
 
 export function Header() {
   const { logout } = useAuth();
+  const { isDark, toggleTheme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <div
-      className="flex align-items-center justify-content-end px-3"
+      className="flex align-items-center justify-content-end gap-3 px-3"
       style={{
-        height: "4.5rem",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.04)",
+        height: "4rem",
       }}
     >
-      <div className="flex align-items-center gap-3">
-        <NavLink
-          to="/profile"
-          className={({ isActive }) =>
-            `p-2 border-round no-underline ${isActive ? "bg-primary text-white" : "text-color"}`
-          }
-        >
-          Profile
-        </NavLink>
-        <Button label="Logout" text onClick={logout} />
-      </div>
+      <Button
+        label={isDark ? "Dark Mode" : "Light Mode"}
+        text
+        onClick={toggleTheme}
+      />
+      <Button label="Profile" text onClick={() => navigate("/profile")} />
+      <Button label="Logout" text onClick={logout} />
     </div>
   );
 }

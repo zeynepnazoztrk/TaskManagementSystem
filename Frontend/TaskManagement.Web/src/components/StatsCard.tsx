@@ -12,7 +12,6 @@ function StatsCardComponent({ label, value, color }: StatsCardProps) {
     <Card
       className="flex-1"
       style={{
-        backgroundColor: "rgba(255, 255, 255, 0.04)",
         borderRadius: "8px",
       }}
     >

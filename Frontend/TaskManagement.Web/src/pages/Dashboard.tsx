@@ -44,7 +44,7 @@ export function Dashboard() {
               stats.cancelledCount,
             ],
             backgroundColor: ["#a16207", "#1d4ed8", "#15803d", "#4b5563"],
-            borderColor: "#16171C",
+            borderColor: ["#a16207", "#1d4ed8", "#15803d", "#4b5563"],
           },
         ],
       }
@@ -59,9 +59,27 @@ export function Dashboard() {
 
   return (
     <div>
+      {overdueTasks.length > 0 && (
+        <div
+          className="flex justify-content-center align-items-center gap-2 p-2 mb-3"
+          style={{
+            backgroundColor: "var(--primary-color)",
+            borderRadius: "6px",
+          }}
+        >
+          <span style={{ color: "rgba(42, 43, 95, 0.9)" }}>
+            {overdueTasks.length} tasks overdue
+          </span>
+        </div>
+      )}
+
       {stats && (
-        <div className="flex flex-column md:flex-row gap-3 mb-3">
-          <StatsCard label="Total" value={stats.totalTasks} color="#A09DF4" />
+        <div className="flex flex-column md:flex-row gap-3 mb-6">
+          <StatsCard
+            label="Total"
+            value={stats.totalTasks}
+            color="var(--primary-color)"
+          />
           <StatsCard
             label="Pending"
             value={stats.pendingCount}
@@ -85,24 +103,9 @@ export function Dashboard() {
         </div>
       )}
 
-      {overdueTasks.length > 0 && (
-        <div
-          className="flex justify-content-center align-items-center gap-2 p-2 mb-6"
-          style={{
-            backgroundColor: "#3f3c6b",
-            color: "#ffffff",
-            borderRadius: "6px",
-          }}
-        >
-          <span>{overdueTasks.length} tasks overdue.</span>
-        </div>
-      )}
-
       <div className="flex flex-column lg:flex-row gap-4">
         <div style={{ flex: 2 }}>
-          <h3 className="mb-3" style={{ visibility: "hidden" }}>
-            Tasks by Status
-          </h3>
+          <h3 className="mb-6"> </h3>
           <div className="flex flex-column md:flex-row align-items-center gap-4">
             <div style={{ maxWidth: "25em" }}>
               {chartData && (
@@ -120,7 +123,10 @@ export function Dashboard() {
                       backgroundColor: item.color,
                     }}
                   />
-                  <span className="text-sm white-space-nowrap">
+                  <span
+                    className="text-sm white-space-nowrap"
+                    style={{ color: "var(--text-color)" }}
+                  >
                     {item.label}
                   </span>
                 </div>
@@ -136,11 +142,11 @@ export function Dashboard() {
               key={task.id}
               className="flex justify-content-between align-items-center p-2 mb-2"
               style={{
-                backgroundColor: "rgba(255, 255, 255, 0.04)",
+                backgroundColor: "var(--surface-card)",
                 borderRadius: "6px",
               }}
             >
-              <span>{task.title}</span>
+              <span style={{ color: "var(--text-color)" }}>{task.title}</span>
               <div className="flex gap-2">
                 <Tag
                   value={statusTags[task.status].label}

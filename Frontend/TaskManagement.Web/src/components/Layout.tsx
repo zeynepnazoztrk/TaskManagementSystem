@@ -10,7 +10,7 @@ export function Layout() {
         className="h-full flex-shrink-0"
         style={{
           width: "14rem",
-          backgroundColor: "rgba(255, 255, 255, 0.04)",
+          backgroundColor: "var(--surface-card)",
         }}
       >
         <Sidebar />

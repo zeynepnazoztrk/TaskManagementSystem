@@ -53,11 +53,7 @@ export function Login() {
                 control={control}
                 rules={{ required: "Username is required" }}
                 render={({ field }) => (
-                  <InputText
-                    id="username"
-                    className="app-input w-full"
-                    {...field}
-                  />
+                  <InputText id="username" className="w-full" {...field} />
                 )}
               />
               <label htmlFor="username">Username</label>
@@ -90,11 +86,13 @@ export function Login() {
           </div>
           <Button type="submit" label="Login" loading={loading} />
           <div className="flex justify-content-center gap-1 text-sm">
-            <span>Don't have an account?</span>
+            <span style={{ color: "var(--text-color)" }}>
+              Don't have an account?
+            </span>
             <Link
               to="/register"
               className="font-bold no-underline"
-              style={{ color: "inherit" }}
+              style={{ color: "var(--text-color)" }}
             >
               Register
             </Link>

@@ -88,7 +88,7 @@ export function CategoryForm({
           render={({ field }) => (
             <InputText
               placeholder="Category name"
-              className="app-input w-full"
+              className="w-full"
               {...field}
             />
           )}
@@ -103,7 +103,7 @@ export function CategoryForm({
             <InputTextarea
               placeholder="Description"
               rows={3}
-              className="app-input w-full"
+              className="w-full"
               {...field}
             />
           )}

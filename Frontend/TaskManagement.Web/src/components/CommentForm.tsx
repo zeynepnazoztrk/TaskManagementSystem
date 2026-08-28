@@ -61,7 +61,7 @@ export function CommentForm({
             <InputTextarea
               placeholder="Comment"
               rows={3}
-              className="app-input w-full"
+              className="w-full"
               {...field}
             />
           )}

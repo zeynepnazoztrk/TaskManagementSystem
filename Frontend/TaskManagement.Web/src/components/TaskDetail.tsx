@@ -14,10 +14,7 @@ interface TaskDetailProps {
 
 export function TaskDetail({ task, onEdit, onDelete }: TaskDetailProps) {
   return (
-    <Card
-      title={task.title}
-      style={{ backgroundColor: "rgba(255, 255, 255, 0.04)" }}
-    >
+    <Card title={task.title} style={{ borderRadius: "12px" }}>
       <div className="flex gap-2 mb-3 justify-content-center">
         <Tag
           value={priorityTags[task.priority].label}

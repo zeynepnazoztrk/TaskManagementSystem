@@ -11,17 +11,21 @@ export function Sidebar() {
       navigate(`/tasks?search=${encodeURIComponent(search.trim())}`);
     }
   };
+
+  const linkStyle = ({ isActive }: { isActive: boolean }) => ({
+    color: isActive ? "var(--primary-color)" : "var(--text-color)",
+    fontWeight: isActive ? 700 : 400,
+  });
+
   return (
     <div className="flex flex-column h-full">
       <div
         className="flex justify-content-center align-items-center px-3 surface-border"
         style={{ height: "4.5rem" }}
       >
-        <NavLink to="/" className="flex align-items-center no-underline">
-          <span className="text-2xl font-bold text-primary">Task Manager</span>
-        </NavLink>
+        <h1 className="mt-6">Task Manager</h1>
       </div>
-      <div className="p-3">
+      <div className="p-3 mt-5">
         <span className="p-input-icon-left w-full">
           <InputText
             placeholder="Search for tasks"
@@ -36,25 +40,22 @@ export function Sidebar() {
         <NavLink
           to="/"
           end
-          className={({ isActive }) =>
-            `sidebar-link text-left  p-2 border-round no-underline w-full ${isActive ? "bg-primary text-white" : "text-color"}`
-          }
+          className="sidebar-link text-left p-2 pl-3 border-round no-underline w-full"
+          style={linkStyle}
         >
           Dashboard
         </NavLink>
         <NavLink
           to="/tasks"
-          className={({ isActive }) =>
-            `sidebar-link p-2 text-left border-round no-underline w-full ${isActive ? "bg-primary text-white" : "text-color"}`
-          }
+          className="sidebar-link p-2 pl-3 text-left border-round no-underline w-full"
+          style={linkStyle}
         >
           Tasks
         </NavLink>
         <NavLink
           to="/categories"
-          className={({ isActive }) =>
-            `sidebar-link p-2 text-left border-round no-underline w-full ${isActive ? "bg-primary text-white" : "text-color"}`
-          }
+          className="sidebar-link p-2 pl-3  text-left border-round no-underline w-full"
+          style={linkStyle}
         >
           Categories
         </NavLink>

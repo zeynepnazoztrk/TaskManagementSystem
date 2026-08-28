@@ -19,7 +19,7 @@ export function Profile() {
       <h2 className="mt-5 mb-3">Profile</h2>
       <Card
         style={{
-          backgroundColor: "rgba(255, 255, 255, 0.04)",
+          backgroundColor: "var(--surface-card)",
           borderRadius: "15px",
         }}
       >

@@ -59,7 +59,7 @@ export function TaskList({ tasks, onView, onEdit, onDelete }: TaskListProps) {
   );
 
   return (
-    <DataTable value={tasks} stripedRows className="task-table">
+    <DataTable value={tasks} stripedRows>
       <Column field="title" header="Title" />
       <Column
         header="Category"

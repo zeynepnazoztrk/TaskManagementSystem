@@ -30,7 +30,6 @@ export function CategoryCard({
     <Card
       className="h-full"
       style={{
-        backgroundColor: "rgba(255, 255, 255, 0.04)",
         borderRadius: "10px",
       }}
     >
@@ -65,8 +64,8 @@ export function CategoryCard({
               key={task.id}
               className="flex justify-content-between align-items-center p-2"
               style={{
-                backgroundColor: "rgba(255, 255, 255, 0.04)",
                 borderRadius: "6px",
+                backgroundColor: "var(--surface-c)",
               }}
             >
               <span

@@ -9,7 +9,7 @@ interface CommentCardProps {
 
 export function CommentCard({ comment, onDelete }: CommentCardProps) {
   return (
-    <Card style={{ backgroundColor: "rgba(255, 255, 255, 0.04)" }}>
+    <Card style={{ backgroundColor: "var(--surface-c)" }}>
       <div className="flex justify-content-between align-items-start gap-2 text-left">
         <p>{comment.comment}</p>
         <Button label="Delete" text onClick={() => onDelete(comment)} />

@@ -59,11 +59,7 @@ export function Register() {
                 control={control}
                 rules={{ required: "Username is required" }}
                 render={({ field }) => (
-                  <InputText
-                    id="username"
-                    className="app-input w-full"
-                    {...field}
-                  />
+                  <InputText id="username" className="w-full" {...field} />
                 )}
               />
               <label htmlFor="username">Username</label>
@@ -87,11 +83,7 @@ export function Register() {
                   },
                 }}
                 render={({ field }) => (
-                  <InputText
-                    id="email"
-                    className="app-input w-full"
-                    {...field}
-                  />
+                  <InputText id="email" className="w-full" {...field} />
                 )}
               />
               <label htmlFor="email">Email</label>
@@ -109,11 +101,7 @@ export function Register() {
                 control={control}
                 rules={{ required: "First name is required" }}
                 render={({ field }) => (
-                  <InputText
-                    id="firstName"
-                    className="app-input w-full"
-                    {...field}
-                  />
+                  <InputText id="firstName" className="w-full" {...field} />
                 )}
               />
               <label htmlFor="firstName">First name</label>
@@ -131,11 +119,7 @@ export function Register() {
                 control={control}
                 rules={{ required: "Last name is required" }}
                 render={({ field }) => (
-                  <InputText
-                    id="lastName"
-                    className="app-input w-full"
-                    {...field}
-                  />
+                  <InputText id="lastName" className="w-full" {...field} />
                 )}
               />
               <label htmlFor="lastName">Last name</label>
@@ -169,11 +153,13 @@ export function Register() {
           </div>
           <Button type="submit" label="Register" loading={loading} />
           <div className="flex justify-content-center gap-1 text-sm">
-            <span>Already have an account?</span>
+            <span style={{ color: "var(--text-color)" }}>
+              Already have an account?
+            </span>
             <Link
               to="/login"
               className="font-bold no-underline"
-              style={{ color: "inherit" }}
+              style={{ color: "var(--text-color)" }}
             >
               Login
             </Link>
